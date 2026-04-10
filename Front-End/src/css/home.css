@@ -1,0 +1,49 @@
+.dashboard-container {
+    margin: 30px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .dashboard-links {
+    margin-top: 30px;
+  }
+  
+  .dashboard-links ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .dashboard-links li {
+    margin-bottom: 15px;
+  }
+  
+  .dashboard-links a {
+    font-size: 18px;
+    color: #4CAF50;
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+  }
+  
+  .dashboard-links a:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  h3 {
+    color: #333;
+  }
+  
+  ul {
+    margin-top: 20px;
+  }
+  
+  ul li {
+    font-size: 16px;
+  }
+  

@@ -1,0 +1,111 @@
+/* login.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.login-container {
+  width: 90%;
+  max-width: 400px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 50px auto;
+  box-sizing: border-box;
+}
+
+.login-logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+form div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+.links-container {
+  margin-top: 20px;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.95rem;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 600px) {
+  .login-container {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .login-logo {
+    width: 120px;
+  }
+
+  label, .link-button, .error-message {
+    font-size: 0.9rem;
+  }
+
+  button[type="submit"] {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
