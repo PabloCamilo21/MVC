@@ -6,6 +6,8 @@ const usuarioController = {
         //desestruturar o objeto json
         const { nome, idade, cidade, estado, bairro, pais, email, senha, regra } = req.body;
 
+        console.log(req.body);
+
         try {
             const [cadastro] = await modelUsuario.cadastrar(nome, idade, cidade, estado, bairro, pais, email, senha, regra);
 

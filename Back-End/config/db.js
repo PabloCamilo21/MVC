@@ -1,11 +1,12 @@
 import mysql from 'mysql2/promise.js';
+import 'dotenv/config.js';
 
 const conexao = mysql.createPool({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "admin",
-    database: "senai"
+    host: process.env.HOST,
+    port: process.env.PORT,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE 
 });
 
 export default conexao;

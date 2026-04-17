@@ -1,10 +1,12 @@
 import express from 'express';
 import conexao from '../config/db.js';
 import routers from './rotas/routers.js';
+import cors from 'cors';
 
 const app = express();
 
 app.use(express.json());
+app.use(cors()); //Biblioteca para permitir a comunicação http de servidores externos (web)
 app.use(routers);
 
 conexao.query("select 1")

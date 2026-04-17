@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import '../css/login.css';
 import axios from 'axios';
 import senai from '../images/senai.png';
@@ -13,11 +13,23 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    try {
+      const response = await axios.post('http://localhost:3001/login', { email, senha });
+
+      if (response.status === 200) {
+        navigate('/home');
+      }
+    }
+    catch (erro) {
+      console.error("Erro no login: ", erro);
+      setErrorMessage('Email ou senha incorretos');
+    }
+
   }
 
   return (
     <div className="login-container">
-      <img src= {senai} alt="Logo-Senai" className="login-logo" />
+      <img src={senai} alt="Logo-Senai" className="login-logo" />
       <h2>Login</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleLogin}>

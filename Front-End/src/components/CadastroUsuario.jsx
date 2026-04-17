@@ -1,42 +1,56 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/cadastroUsuario.css';
 
 function CadastroUsuario() {
   const [nome, setNome] = useState('');
   const [idade, setIdade] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
   const [cidade, setCidade] = useState('');
   const [estado, setEstado] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [pais, setPais] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [regra, setRegra] = useState('');
 
   const navegar = useNavigate();
 
   const handleEnviarFormulario = async (e) => {
     e.preventDefault();
 
-    if (!nome || !idade || !dataNascimento || !cidade || !estado || !email || !senha) {
-      alert('Todos os campos devem ser preenchidos!');
-      return;
-    }
-
     const usuario = {
       nome,
       idade,
-      dataNascimento,
       cidade,
       estado,
+      bairro,
+      pais,
       email,
       senha,
+      regra
     };
 
     try {
-      
+      const response = await axios.post('http://localhost:3001/cadastro', usuario);
+
+      if (response.status === 201) {
+        setNome('');
+        setIdade('');
+        setCidade('');
+        setEstado('');
+        setBairro('');
+        setPais('');
+        setEmail('');
+        setSenha('');
+        setRegra();
+        alert('Cadastro realizado com sucesso');
+        navegar('/login');
+      }
 
     } catch (erro) {
-     
+      console.error(erro);
+      alert('Usuário já existe');
     }
   };
 
@@ -66,7 +80,7 @@ function CadastroUsuario() {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label>Data de Nascimento:</label>
             <input
               type="date"
@@ -74,7 +88,7 @@ function CadastroUsuario() {
               onChange={(e) => setDataNascimento(e.target.value)}
               required
             />
-          </div>
+          </div> */}
 
           <div>
             <label>Cidade:</label>
@@ -125,6 +139,28 @@ function CadastroUsuario() {
           </div>
 
           <div>
+            <label htmlFor="bairro">Bairro:</label>
+            <input
+              type="text"
+              value={bairro}
+              onChange={(e) => setBairro(e.target.value)}
+              placeholder='Ex: Jd Brasil'
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="pais">País:</label>
+
+            <input type="text"
+              placeholder='Ex: Brasil'
+              value={pais}
+              onChange={(e) => setPais(e.target.value)}
+              required
+            />
+          </div>
+
+          <div>
             <label>Email:</label>
             <input
               type="email"
@@ -144,6 +180,14 @@ function CadastroUsuario() {
             />
           </div>
 
+          <div>
+            <label htmlFor="regra">Regra:</label>
+            <select value={regra} onChange={(e) => setRegra(e.target.value)} required>
+              <option value="Admin">ADMIN</option>
+              <option value="Usuario">USUARIO</option>
+            </select>
+          </div>
+
           <button type="submit">Cadastrar</button>
         </form>
 
@@ -154,5 +198,4 @@ function CadastroUsuario() {
     </div>
   );
 }
-
 export default CadastroUsuario;
