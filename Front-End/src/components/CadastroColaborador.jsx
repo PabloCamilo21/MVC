@@ -36,7 +36,7 @@ function CadastroColaborador() {
 
             console.log(response);
 
-            if (response.status === 201) {
+            if (response.status === 201) { //comentario teste
                 setNome('');
                 setIdade('');
                 setCidade('');
