@@ -34,11 +34,16 @@ const usuarioController = {
         try {
             const validar = await modelUsuario.validarLogin(email, senha);
 
+            // const usuario = {
+            //     nome: validar.nome,
+            //     id_usuario: validar.id
+            // }
+
             if(!validar){
                 return res.status(401).json({msg: "Falha ao realizar login"});
             }
             else{
-                return res.status(200).json({msg: "Sucesso"});
+                return res.status(200).json(validar);
             }
 
         } catch (erro) {

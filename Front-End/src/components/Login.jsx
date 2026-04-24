@@ -16,8 +16,16 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:3001/login', { email, senha });
 
+      console.log(response.data);
+
       if (response.status === 200) {
+        let tokenBackEnd = response.data.id;
+
+        localStorage.setItem('token', tokenBackEnd)
         navigate('/home');
+      }
+      else{
+        alert('Email ou senha incorretos');
       }
     }
     catch (erro) {

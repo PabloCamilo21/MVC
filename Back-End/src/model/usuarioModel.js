@@ -35,12 +35,12 @@ const modelUsuario = {
     },
     validarLogin: async(email, senha) => {
         try {
-            const [consulta] = await modelUsuario.buscarEmail(email);
+            const [consulta] = await modelUsuario.buscarEmail(email);      
 
             const combinacao = await bcrypt.compare(senha, consulta[0].senha);
 
             if(combinacao){
-                return consulta;
+                return {id:consulta[0].id, nome:consulta[0].nome};
             }
             else{
                 return null;
@@ -52,8 +52,7 @@ const modelUsuario = {
     },
     buscarEmail: async(email) => {
         try {
-            const resultado = await conexao.query("SELECT nome, idade, cidade, estado, bairro, pais, email, senha, regra FROM usuarios WHERE email = ?", [email]);
-            console.log(resultado);
+            const resultado = await conexao.query("SELECT id, nome, idade, cidade, estado, bairro, pais, email, senha, regra FROM usuarios WHERE email = ?", [email]);
             return resultado;
 
         } catch (erro) {

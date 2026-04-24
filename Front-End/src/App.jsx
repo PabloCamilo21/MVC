@@ -6,6 +6,7 @@ import ResetPassword from './components/ResetarSenha';
 import ListarProdutos from './components/Produtos';
 import CadastroProduto from './components/CadastroProduto';
 import EditarProduto from './components/EditarProduto';
+import CadastroColaborador from './components/CadastroColaborador';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/editar-produto/:id' element={<EditarProduto/>}/>
         <Route path='/listar-produtos' element={<ListarProdutos />}/>
         <Route path="/resetepassword" element={<ResetPassword />} />
+        <Route path="/cadastro-colaborador" element={<CadastroColaborador />} />
         <Route path="*" element={<Login />} />
       </Routes>
     </Router>

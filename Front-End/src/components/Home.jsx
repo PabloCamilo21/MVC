@@ -64,6 +64,10 @@ const Home = () => {
           <button style={{ width: '100%' }}>CADASTRO</button>
         </Link>
 
+        <Link to="/cadastro-colaborador">
+          <button style={{ width: '100%' }}>CADASTRO COLABORADOR</button>
+        </Link>
+
         <Link to="/cadastro-produtos">
           <button style={{ width: '100%' }}>CADASTRO PRODUTOS</button>
         </Link>

@@ -2,6 +2,7 @@ import express from 'express';
 import controllerRaiz from '../controller/controllerRoot.js';
 import usuarioController from '../controller/controllerUsuario.js';
 import controllerProduto from '../controller/controllerProduto.js';
+import colaboradorController from '../controller/controllerColaborador.js';
 
 const router = express.Router();
 
@@ -16,5 +17,8 @@ router.get('/listar-produtos', controllerProduto.listar);
 router.get('/listar-produtos/:id', controllerProduto.listarPorId);
 router.put('/editar-produto/:id', controllerProduto.editar);
 router.delete('/deletar-produto/:id', controllerProduto.deletar);
+
+//Rotas Colaborador
+router.post('/cadastro-colaborador', colaboradorController.cadastrar);
 export default router;
 

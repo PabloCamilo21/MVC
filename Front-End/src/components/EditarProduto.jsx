@@ -111,7 +111,7 @@ function EditarProduto() {
         </form>
 
         <div>
-          <button onClick={() => navegar('/home')}>Voltar</button>
+          <button onClick={() => navegar('/listar-produtos')}>Voltar</button>
         </div>
       </div>
     </div>
