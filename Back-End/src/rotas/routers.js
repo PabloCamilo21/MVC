@@ -9,6 +9,7 @@ const router = express.Router();
 //Rotas usuário
 router.get('/', controllerRaiz.raiz);
 router.post('/cadastro', usuarioController.cadastrar);
+router.post('/api/usuario', usuarioController.cadastrar);
 router.post('/login', usuarioController.login);
 
 //Rotas produto
@@ -20,5 +21,12 @@ router.delete('/deletar-produto/:id', controllerProduto.deletar);
 
 //Rotas Colaborador
 router.post('/cadastro-colaborador', colaboradorController.cadastrar);
+
+//JWT - JSON Web Token
+//Autenticação e autorização
+
+//HEADER, PAYLOAD, SIGNATURE
+//HS256
+//RS256
 export default router;
 

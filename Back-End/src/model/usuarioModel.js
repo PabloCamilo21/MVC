@@ -1,5 +1,7 @@
 import conexao from "../../config/db.js";
 import bcrypt from 'bcrypt'; //import da biblioteca bcrypt para senha
+import jwt from 'jsonwebtoken';
+import 'dotenv/config.js';
 
 const modelUsuario = {
     listarUsuarios: async () => {
@@ -40,7 +42,12 @@ const modelUsuario = {
             const combinacao = await bcrypt.compare(senha, consulta[0].senha);
 
             if(combinacao){
-                return {id:consulta[0].id, nome:consulta[0].nome};
+                const acessToken = jwt.sign(
+                    {id: consulta[0].id, nome: consulta[0].nome, email: consulta[0].email},
+                    process.env.JWT_SECRET,
+                    { expiresIn: '25m' }
+                );
+                return {acessToken};
             }
             else{
                 return null;

@@ -9,25 +9,25 @@ const ListarProdutos = () => {
   const [erro, setErro] = useState(null);
   const navegar = useNavigate();
 
-  useEffect(() => {
-    const carregarProdutos = async () => {
-      try {
-        const resposta = await axios.get("http://localhost:3001/listar-produtos");
+    useEffect(() => {
+      const carregarProdutos = async () => {
+        try {
+          const resposta = await axios.get("http://localhost:3001/listar-produtos");
 
-        const produtosOrdenados = resposta.data.sort((a, b) =>
-          a.nome.localeCompare(b.nome)
-        );
+          const produtosOrdenados = resposta.data.sort((a, b) =>
+            a.nome.localeCompare(b.nome)
+          );
 
-        setProdutos(produtosOrdenados);
-      } catch {
-        setErro("Erro ao carregar os produtos.");
-      } finally {
-        setCarregando(false);
-      }
-    };
+          setProdutos(produtosOrdenados);
+        } catch {
+          setErro("Erro ao carregar os produtos.");
+        } finally {
+          setCarregando(false);
+        }
+      };
 
-    carregarProdutos();
-  }, []);
+      carregarProdutos();
+    }, []);
 
   const handleExcluir = async (id) => {
     if (window.confirm("Tem certeza que deseja excluir este produto?")) {
