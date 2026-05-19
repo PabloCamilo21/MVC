@@ -47,6 +47,16 @@ const modelProduto = {
         } catch (erro) {
             throw erro;
         }
+    },
+    pesquisarNome: async(nome) => {
+        try {
+            nome = nome.toLowerCase().trim();
+
+            const [resultado] = await conexao.query(`SELECT id, nome, quantidade, valor, codigo FROM produtos WHERE nome LIKE ? ORDER BY nome ASC`, [`%${nome}%`]);
+            return resultado;
+        } catch (erro) {
+            throw erro;
+        }
     }
 }
 export default modelProduto;

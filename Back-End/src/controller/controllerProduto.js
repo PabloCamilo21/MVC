@@ -73,12 +73,28 @@ const controllerProduto = {
         }
     },
     listarPorId: async (req, res) => {
-        const {id} = req.params;
+        const { id } = req.params;
         try {
             const objeto = await modelProduto.listarPorId(id);
             res.status(200).json(objeto);
         } catch (erro) {
             console.log(erro);
+            return res.status(500).json({ msg: "Erro no servidor" });
+        }
+    },
+    pesquisarProdutos: async (req, res) => {
+        try {
+            const {nome} = req.query;
+
+            if(!nome){
+                return res.status(400).json({
+                    msg: "Informe um nome"
+                });
+            }
+            const produtos = await modelProduto.pesquisarNome(nome);
+            res.status(200).json(produtos);
+            
+        } catch (erro) {
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     }

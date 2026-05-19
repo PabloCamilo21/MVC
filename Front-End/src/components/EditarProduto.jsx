@@ -47,6 +47,7 @@ function EditarProduto() {
   useEffect(()=>{
       async function getDadosProduto(){
         const response = await axios.get(`http://localhost:3001/listar-produtos/${id}`);
+        console.log(response.data);
         setNome(response.data[0].nome); 
         setQuantidade(response.data[0].quantidade); 
         setValor(response.data[0].valor); 

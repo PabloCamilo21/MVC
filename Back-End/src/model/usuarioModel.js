@@ -40,6 +40,7 @@ const modelUsuario = {
             const [consulta] = await modelUsuario.buscarEmail(email);      
 
             const combinacao = await bcrypt.compare(senha, consulta[0].senha);
+            console.log(consulta[0])
 
             if(combinacao){
                 const acessToken = jwt.sign(
@@ -47,7 +48,7 @@ const modelUsuario = {
                     process.env.JWT_SECRET,
                     { expiresIn: '25m' }
                 );
-                return {acessToken};
+                return {IdUsuario:consulta[0].id, regra: consulta[0].regra ,acessToken};
             }
             else{
                 return null;

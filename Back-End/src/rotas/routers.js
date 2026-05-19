@@ -15,6 +15,7 @@ router.post('/login', usuarioController.login);
 //Rotas produto
 router.post('/cadastro-produto', controllerProduto.cadastrar);
 router.get('/listar-produtos', controllerProduto.listar);
+router.get('/listar-produtos/pesquisar', controllerProduto.pesquisarProdutos);
 router.get('/listar-produtos/:id', controllerProduto.listarPorId);
 router.put('/editar-produto/:id', controllerProduto.editar);
 router.delete('/deletar-produto/:id', controllerProduto.deletar);

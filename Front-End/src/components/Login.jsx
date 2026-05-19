@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import '../css/login.css';
 import axios from 'axios';
 import senai from '../images/senai.png';
@@ -19,9 +19,11 @@ function Login() {
       console.log(response.data);
 
       if (response.status === 200) {
-        let tokenBackEnd = response.data.id;
+        
+        await sessionStorage.setItem("regra", response.data.regra);
+        await sessionStorage.setItem("idUsuario", response.data.idUsuario);
+        await sessionStorage.setItem("token", response.data.acessToken);
 
-        localStorage.setItem('token', tokenBackEnd)
         navigate('/home');
       }
       else{

@@ -33,6 +33,7 @@ const usuarioController = {
 
         try {
             const validar = await modelUsuario.validarLogin(email, senha);
+            console.log(validar)
 
             // const usuario = {
             //     nome: validar.nome,

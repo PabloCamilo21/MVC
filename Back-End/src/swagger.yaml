@@ -1,0 +1,391 @@
+openapi: 3.0.0
+
+info:
+  title: API Sistema
+  version: 1.0.0
+  description: API de gerenciamento de usuários, produtos e colaboradores
+
+servers:
+  - url: http://localhost:3001
+    description: Desenvolvimento
+
+  - url: https://api.meusistema.com
+    description: Produção
+
+tags:
+  - name: Root
+  - name: Produto
+  - name: Colaborador
+
+paths:
+
+  /:
+    get:
+      tags:
+        - Root
+
+      summary: Rota principal da API
+
+      responses:
+        '200':
+          description: API online
+
+  /api/usuario:
+    post:
+      tags:
+        - Usuario
+
+      summary: Cadastrar novo usuário
+
+      security:
+        - BearerAuth: []
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+
+      responses:
+        '201':
+          description: Usuário cadastrado com sucesso
+
+        '401':
+          description: Token inválido ou não informado
+
+        '500':
+          description: Erro interno do servidor
+
+  /login:
+    post:
+      tags:
+        - Usuario
+
+      summary: Realizar login
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+
+      responses:
+        '200':
+          description: Login realizado com sucesso
+
+          content:
+            application/json:
+              schema:
+                type: object
+
+                properties:
+                  token:
+                    type: string
+                    example: JWT_TOKEN
+
+        '401':
+          description: Credenciais inválidas
+
+        '500':
+          description: Erro interno do servidor
+
+  /produto:
+    post:
+      tags:
+        - Produto
+
+      summary: Cadastrar produto
+
+      security:
+        - BearerAuth: []
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Produto'
+
+      responses:
+        '201':
+          description: Produto cadastrado com sucesso
+
+        '401':
+          description: Token inválido ou não informado
+
+        '500':
+          description: Erro interno do servidor
+
+    get:
+      tags:
+        - Produto
+
+      summary: Listar todos os produtos
+
+      security:
+        - BearerAuth: []
+
+      responses:
+        '200':
+          description: Lista de produtos
+
+        '401':
+          description: Token inválido ou não informado
+
+        '500':
+          description: Erro interno do servidor
+
+  /produto/{id}:
+    get:
+      tags:
+        - Produto
+
+      summary: Buscar produto por ID
+
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: path
+          name: id
+          required: true
+
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: Produto encontrado
+
+        '404':
+          description: Produto não encontrado
+
+        '500':
+          description: Erro interno do servidor
+
+    put:
+      tags:
+        - Produto
+
+      summary: Atualizar produto
+
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: path
+          name: id
+          required: true
+
+          schema:
+            type: integer
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AtualizarProduto'
+
+      responses:
+        '200':
+          description: Produto atualizado
+
+        '404':
+          description: Produto não encontrado
+
+        '500':
+          description: Erro interno do servidor
+
+    delete:
+      tags:
+        - Produto
+
+      summary: Excluir produto
+
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: path
+          name: id
+          required: true
+
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: Produto removido
+
+        '404':
+          description: Produto não encontrado
+
+        '500':
+          description: Erro interno do servidor
+
+  /api/colaborador:
+    post:
+      tags:
+        - Colaborador
+
+      summary: Cadastrar colaborador
+
+      security:
+        - BearerAuth: []
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Colaborador'
+
+      responses:
+        '201':
+          description: Colaborador cadastrado
+
+        '401':
+          description: Token inválido ou não informado
+
+        '500':
+          description: Erro interno do servidor
+
+components:
+
+  securitySchemes:
+
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    Usuario:
+      type: object
+
+      required:
+        - nome
+        - email
+        - senha
+
+      properties:
+
+        nome:
+          type: string
+          example: João Silva
+
+        email:
+          type: string
+          example: joao@email.com
+
+        senha:
+          type: string
+          example: 123456
+
+    Login:
+      type: object
+
+      required:
+        - email
+        - senha
+
+      properties:
+
+        email:
+          type: string
+          example: joao@email.com
+
+        senha:
+          type: string
+          example: 123456
+
+    Produto:
+      type: object
+
+      required:
+        - nome
+        - quantidade
+        - valor
+        - codigo
+
+      properties:
+
+        nome:
+          type: string
+          example: Notebook Gamer
+
+        quantidade:
+          type: integer
+          example: 100
+
+        valor:
+          type: number
+          example: 5500
+
+        codigo:
+          type: string
+          example: "102030"
+
+    AtualizarProduto:
+      type: object
+
+      properties:
+
+        nome:
+          type: string
+          example: Notebook Atualizado
+
+        preco:
+          type: number
+          example: 7000
+
+    Colaborador:
+      type: object
+
+      required:
+        - id_usuario
+        - nome
+        - idade
+        - cidade
+        - estado
+        - bairro
+        - nf
+
+      properties:
+
+        id_usuario:
+          type: integer
+          example: 1
+
+        nome:
+          type: string
+          example: Maria
+
+        idade:
+          type: integer
+          example: 30
+
+        cidade:
+          type: string
+          example: São Paulo
+
+        estado:
+          type: string
+          example: SP
+
+        bairro:
+          type: string
+          example: Centro
+
+        nf:
+          type: string
+          example: "123456"
