@@ -91,6 +91,6 @@ Desenvolvido por Pablo Camilo
 
 ---
 
-## 📌 Observações
+## Observações
 
 Este projeto foi desenvolvido com fins educacionais durante os estudos de Desenvolvimento de Sistemas, focando na prática de aplicações web completas utilizando tecnologias modernas.
