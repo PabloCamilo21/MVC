@@ -1,8 +1,8 @@
-# 🚀 Projeto MVC com React + Node.js
+# Projeto Dashboard Simples com React + Node.js
 
-Este projeto consiste em uma aplicação web completa utilizando a arquitetura **MVC (Model-View-Controller)**, com integração entre **Front-end em React**, **Back-end** e **Banco de Dados**.
+Este projeto consiste em uma aplicação web completa utilizando a arquitetura MVC (Model-View-Controller), com integração entre Front-end em React, Back-end e Banco de Dados.
 
-## 📌 Sobre o Projeto
+## Sobre o Projeto
 
 A aplicação foi desenvolvida com o objetivo de praticar a separação de responsabilidades utilizando o padrão MVC, que divide a aplicação em três partes principais: Model, View e Controller, facilitando a organização, manutenção e escalabilidade do sistema.
 
@@ -10,28 +10,28 @@ O padrão MVC permite que cada camada tenha uma função específica, melhorando
 
 ---
 
-## 🧠 Funcionalidades
+## Funcionalidades
 
-### 🔐 Autenticação
+### Autenticação
 - Tela de **login** desenvolvida em React
 - Validação de usuário integrada com o back-end
 
-### 👤 Cadastro de Usuário
+###  Cadastro de Usuário
 - Formulário para criação de novos usuários
 - Integração com banco de dados
 
-### 📊 Dashboard
+### Dashboard
 - Dashboard simples para visualização de dados
 - Interface organizada e funcional
 
-### 📦 Produtos
+### Produtos
 - Cadastro de produtos
 - Listagem de produtos em tabela
 - Integração completa com o back-end
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Front-end
 - React
@@ -47,7 +47,7 @@ O padrão MVC permite que cada camada tenha uma função específica, melhorando
 
 ---
 
-## 🏗️ Arquitetura MVC
+## Arquitetura MVC
 
 O projeto segue o padrão MVC:
 
@@ -59,7 +59,7 @@ Esse padrão ajuda a separar responsabilidades e facilita testes e manutenção 
 
 ---
 
-## 🔗 Integração
+## Integração
 
 - Comunicação entre front-end e back-end via API
 - Consumo de dados utilizando Axios
@@ -67,7 +67,7 @@ Esse padrão ajuda a separar responsabilidades e facilita testes e manutenção 
 
 ---
 
-## 🎯 Objetivo do Projeto
+## Objetivo do Projeto
 
 - Praticar arquitetura MVC
 - Integrar front-end com back-end
@@ -76,7 +76,7 @@ Esse padrão ajuda a separar responsabilidades e facilita testes e manutenção 
 
 ---
 
-## 📚 Aprendizados
+## Aprendizados
 
 - Estruturação de projetos em camadas
 - Comunicação entre cliente e servidor
@@ -85,9 +85,9 @@ Esse padrão ajuda a separar responsabilidades e facilita testes e manutenção 
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
-Desenvolvido por **Pablo Camilo**
+Desenvolvido por Pablo Camilo
 
 ---
 
